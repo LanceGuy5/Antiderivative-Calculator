@@ -1,4 +1,5 @@
 import sympy as sp
+from sympy.integrals.risch import risch_integrate
 from flask import Flask, render_template, request, jsonify
 import json
 
@@ -18,7 +19,11 @@ def integrate():
         unedited = request.get_json()
         func = define_function(unedited)
         parsed_func = parse(func)
-        integral = sp.integrate(parsed_func)
+        print(parsed_func)
+        integral = sp.integrate(parsed_func, x)
+        integral.doit()
+        # integral = risch_integrate(parsed_func, x)
+        # integral.doit()
         results = {
             'processed': 'true',
             'result': reverse_parse(sp.sstr(integral))

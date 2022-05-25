@@ -137,7 +137,7 @@ function handleResult(integral){
     document.getElementById("integral-display").innerHTML = `$$F(x) = ${parser(func)} + C$$`;
         mj.typesetPromise().then(() => {
         mj.typesetPromise();
-    }).catch(validFunc = false);
+    });
 }
 
 //INITIAL PLAN
