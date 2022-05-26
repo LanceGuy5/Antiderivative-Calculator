@@ -29,11 +29,13 @@
                     displayIndent: '0'
                 },
                 loader: {
-                    load: ['[tex]/physics']
+                    load: ['[tex]/physics',
+                            '[tex]/amscd']
                 },
                 tex: {
                     packages: {
-                        '[+]': ['physics']
+                        '[+]': ['physics',
+                                'amscd']
                     }
                 }
             };
@@ -48,7 +50,11 @@
         </script>
     </head>
     <body>
-        <h1>Integral Calculator!</h1>
+        <div class="title-parent">
+            <div class="title">
+                <h1>Antiderivative Calculator!</h1>
+            </div>
+        </div>
         <h3 id="func-display">$$\int f(x)  dx$$</h3>
         <form id="search-form">
             <label for="calc-input">\(f(x) = \)</label>

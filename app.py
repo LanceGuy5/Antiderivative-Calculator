@@ -13,15 +13,18 @@ def index():
     return render_template('index.html')
 
 
+# TODO Add compatibility for absolute value
 @app.route('/process_input', methods=['POST', 'GET'])
 def integrate():
     if request.method == "POST":
         unedited = request.get_json()
         func = define_function(unedited)
         parsed_func = parse(func)
-        print(parsed_func)
+        print("Parsed: " + parsed_func)
         integral = sp.integrate(parsed_func, x)
         integral.doit()
+        integral = sp.simplify(integral)
+        integral = sp.fu(integral)
         # integral = risch_integrate(parsed_func, x)
         # integral.doit()
         results = {
@@ -55,7 +58,15 @@ def parse(func: str):
         else:
             i += 1
 
-    func = func.replace("e", "E")
+    k = 0
+
+    while k < len(func):
+        if func[k] == 'e' and func[k - 1:k + 2] != "sec":
+            print(func[k-1:k+1])
+            func = func[0:k] + "E" + func[k+1:]
+            k = 0
+        else:
+            k += 1
 
     return func
 
@@ -72,8 +83,6 @@ def reverse_parse(func: str):
     func = func.replace("E", "e")
     func = func.replace("log", "ln")
     func = func.replace("exp", "e^")
-
-    print(func)
 
     return func
 
