@@ -1,18 +1,98 @@
 html,
-body{
+body {
     background-color: rgb(137, 191, 255);
+    height: 100%;
+    overflow-y: hidden;
 }
 
-.title-parent{
-    height: 80px;
+.title-parent {
+    height: 50px;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: +10px;
+}
+
+.title {
+    font-size: 30px;
+    font-family: Cambria Math, serif;
+    position: absolute;
+}
+
+#init-display-parent{
+    width: 100%;
+    height: 200px;
     align-items: center;
     justify-content: center;
 }
 
-.title{
-    font-size: 35px;
+#init-display{
+    /*position: absolute;*/
+    /*overflow-x: hidden;*/
+    /*margin-left: +40%;*/
+}
+
+#calc-parent {
+    width: calc(100% - 70);
+    height: 50px;
+    align-items: first baseline;
+    margin-left: +70px;
+    /*position: absolute;*/
+}
+
+#calc-inp-sty{
+    float: left;
+    /*position: absolute;*/
+}
+
+#calc-input {
     font-family: Cambria Math, serif;
+    width: 60%;
+    border: 0;
+    border-bottom: 3px solid black;
+    outline: 0;
+    font-size: 1.8rem;
+    color: black;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+    float: left;
+    display: inline;
+    margin-left: +40px;
+    overflow-x: hidden;
+}
+
+#calc-input:focus {
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    /*border-image: linear-gradient(to right, black, rgb(137, 191, 255));*/
+    /*border-image-slice: 2;*/
+}
+
+#calc-submit {
+    background-color: rgb(137, 160, 255); /* Test colors */
+    font-family: Cambria Math, serif;
+    border: 2px solid black;
+    color: white;
+    padding: 16px 30px; /*15, 32 */
     text-align: center;
-    position: absolute;
+    text-decoration: none;
+    font-size: 20px;
+    transition-duration: 0.4s;
+    border-radius: 15px;
+    float: left;
+    display: inline;
+    margin-left: +40px;
+    margin-top: -10px;
+    overflow-x: hidden;
+}
+
+#calc-submit:hover {
+    background-color: rgb(137, 200, 255); /* CHECK */
+    color: white;
+}
+
+#output-display{
+
 }

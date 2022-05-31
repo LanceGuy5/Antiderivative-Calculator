@@ -3,7 +3,7 @@
 
 //Convert function to LaTeX
 //Display function using MathJax
-//Add calculator-akin functionality (buttons with symbols)
+//Add calculator-akin functionality (buttons with symbols) ?
 let textInput;
 let validFunc = true;
 let mj;

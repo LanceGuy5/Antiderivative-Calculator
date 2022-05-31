@@ -25,6 +25,7 @@ def integrate():
         integral.doit()
         integral = sp.simplify(integral)
         integral = sp.fu(integral)
+        # get_graph(parsed_func, integral)
         # integral = risch_integrate(parsed_func, x)
         # integral.doit()
         results = {
@@ -85,6 +86,14 @@ def reverse_parse(func: str):
     func = func.replace("exp", "e^")
 
     return func
+
+
+def get_graph(original: str, integral: str):
+    p1 = sp.plot(integral, show=False)
+    p1.title = "Original vs. Integral"
+    p1.xlim = range(-20, 20)
+    p1.ylim = range(-20, 20)
+    p1.show()
 
 
 if __name__ == '__main__':

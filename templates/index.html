@@ -1,68 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="Integral Calculator">
-        <meta name="keywords" content="Integral, Calculator, Math">
-        <meta name="author" content="Lance Hartman, Others">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Indefinite Integral Calculator</title>
-        <link rel="stylesheet" href="{{ url_for('static',filename='style.css')  }}">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="../static/calculator.js"></script>
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>
-            window.MathJax = {
-                chtml: {
-                    scale: 3,                      // global scaling factor for all expressions
-                    minScale: .5,                  // smallest scaling factor to use
-                    mtextInheritFont: false,       // true to make mtext elements use surrounding font
-                    merrorInheritFont: false,      // true to make merror text use surrounding font
-                    mtextFont: '',                 // font to use for mtext, if not inheriting (empty means use MathJax fonts)
-                    merrorFont: 'serif',           // font to use for merror, if not inheriting (empty means use MathJax fonts)
-                    unknownFamily: 'serif',        // font to use for character that aren't in MathJax's fonts
-                    mathmlSpacing: false,          // true for MathML spacing rules, false for TeX rules
-                    skipAttributes: {},            // RFDa and other attributes NOT to copy to the output
-                    exFactor: .5,                  // default size of ex in em units
-                    displayAlign: 'center',        // default for indentalign when set to 'auto'
-                    displayIndent: '0'
-                },
-                loader: {
-                    load: ['[tex]/physics',
-                            '[tex]/amscd']
-                },
-                tex: {
-                    packages: {
-                        '[+]': ['physics',
-                                'amscd']
-                    }
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Integral Calculator">
+    <meta name="keywords" content="Integral, Calculator, Math">
+    <meta name="author" content="Lance Hartman, Others">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indefinite Integral Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../static/calculator.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            chtml: {
+                scale: 3,                      // global scaling factor for all expressions
+                minScale: .5,                  // smallest scaling factor to use
+                mtextInheritFont: false,       // true to make mtext elements use surrounding font
+                merrorInheritFont: false,      // true to make merror text use surrounding font
+                mtextFont: '',                 // font to use for mtext, if not inheriting (empty means use MathJax fonts)
+                merrorFont: 'serif',           // font to use for merror, if not inheriting (empty means use MathJax fonts)
+                unknownFamily: 'serif',        // font to use for character that aren't in MathJax's fonts
+                mathmlSpacing: false,          // true for MathML spacing rules, false for TeX rules
+                skipAttributes: {},            // RFDa and other attributes NOT to copy to the output
+                exFactor: .5,                  // default size of ex in em units
+                displayAlign: 'center',        // default for indentalign when set to 'auto'
+                displayIndent: '0'
+            },
+            loader: {
+                load: ['[tex]/physics',
+                    '[tex]/amscd']
+            },
+            tex: {
+                packages: {
+                    '[+]': ['physics',
+                        'amscd']
                 }
-            };
-        </script>
-        <script type="text/x-mathjax-config">/ default for indentshift when set to 'auto'
+            }
+        };
+    </script>
+    <script type="text/x-mathjax-config">/ default for indentshift when set to 'auto'
             MathJax.Hub.Config({
                 tex2jax: {
                     inlineMath: [ ['$','$'], ["\\(","\\)"] ],
                     processEscapes: true
                 }
             });
-        </script>
-    </head>
-    <body>
-        <div class="title-parent">
-            <div class="title">
-                <h1>Antiderivative Calculator!</h1>
-            </div>
-        </div>
-        <h3 id="func-display">$$\int f(x)  dx$$</h3>
-        <form id="search-form">
+
+    </script>
+</head>
+<body>
+<div class="title-parent">
+    <div class="title">
+        <h1>Antiderivative Calculator</h1>
+    </div>
+</div>
+<div id="init-display-parent">
+    <div id="init-display">
+        <h3 id="func-display">$$\int f(x) dx$$</h3>
+    </div>
+</div>
+<div id="calc-parent">
+    <form id="search-form">
+        <div id="calc-inp-sty">
             <label for="calc-input">\(f(x) = \)</label>
-            <input type="text" id="calc-input">
-            <button type="button" id="calc-submit" onclick="calculateIntegral()">Integrate!</button>
-        </form>
-        <div id="output-display">
-            <h3 id="integral-display">$$F(x) = $$</h3>
         </div>
-    </body>
+        <div id="input">
+            <input type="text" id="calc-input">
+        </div>
+        <div id="submit">
+            <button type="button" id="calc-submit" onclick="calculateIntegral()">Integrate!</button>
+        </div>
+    </form>
+</div>
+<div id="output-display">
+    <h3 id="integral-display">$$F(x) = $$</h3>
+</div>
+</body>
 </html>
